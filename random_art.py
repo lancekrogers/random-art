@@ -1,5 +1,5 @@
 import random
-from math import sin, cos, sqrt, pi, tan
+from math import sin, cos, pi, tan, sqrt
 
 # Your job is to create better version of create_expression and
 # run_expression to create random art.
@@ -10,43 +10,48 @@ def create_expression():
     """This function takes no arguments and returns an expression that
     generates a number between -1.0 and 1.0, given
     return expr x and y coordinates."""
-    mu = (3 + 9) / 2
-    sd =  2.1
-    gauss_graph = random.gauss(mu, sd)
+
     a = random.triangular()
     z = random.random()
-    m = z + 1
-    n = z + 10
+    m = z - 1
+    n = z - 10
     o = a + z * pi
+    gauss_graph = random.gauss(m, n)
+
 
     def function_one(x, y):
 
         return sin(sin(x) + cos(y) * pi * sin(a * o))
 
     def function_two(x, y):
-        return sin((gauss_graph * sin(m) + sin(n)) * a) * pi
+        return sin((gauss_graph * sin(x) + sin(y)) * a)
     def function_three(x, y):
-        return (sin(a + z) + (pi * x)) + o
+        return (sin(a + z) + (pi * x)) + o**2
     def function_four(x, y):
-        return sin(a * x) + tan(y)
+        triangle = random.triangular(x, y)
+        return sin(sin(a * x) + tan(y)) + sin((sin(a * -x))) * ((x + triangle**2) - y)
     def function_five(x, y):
-        num_list = [45, 67, 78, 3, 54, 8, 12]
-        for num in num_list:
-            five_value = (pi / num)
-            return five_value
-        return cos(five_value)
+        triangle = random.triangular(z,m)**2
+        return sin(triangle * -x * y) + pi**2
+    def function_six(x, y):
 
-    function_list = [function_one, function_two, function_three, function_four, function_five]
+        var = random.uniform(x,y) * (pi * x * y)/ 2
+
+        return var
+    def function_seven(x, y):
+        return sin(x + y) + cos(y) * ((pi**2) / z)
+
+
+    function_list = [function_one, function_two, function_three, function_four, function_five, function_six, function_seven]
 
     random_function = random.choice(function_list)
 
     def expr(x,y):
-        num_list = [45, 67, 78, 3, 54, 8, 12]
-        for num in num_list:
-            five_value = (pi / num)
 
 
-        return (random_function(x, y) * five_value)
+        return ((a * (random_function(x, y)) / pi) + (random_function(x, y)) + ((sin(random_function(x, y) + random_function(x, y)) * pi**2) * pi**2) * pi**2)
+
+
 
 
     return expr
