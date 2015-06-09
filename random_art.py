@@ -42,14 +42,16 @@ def create_expression():
         return sin(x + y) + cos(y) * ((pi**2) / z)
 
 
-    function_list = [function_one, function_two, function_three, function_four, function_five, function_six, function_seven]
+    function_list = [function_one, function_two, function_three, function_four, function_five, function_six, \
+                                                                                                function_seven]
 
     random_function = random.choice(function_list)
 
     def expr(x,y):
 
 
-        return ((a * (random_function(x, y)) / pi) + (random_function(x, y)) + ((sin(random_function(x, y) + random_function(x, y)) * pi**2) * pi**2) * pi**2)
+        return ((a * z * (random_function(x, y)) / pi) + (random_function(x, y) * a**2) + ((sin(random_function(x, y) \
+                                                            + random_function(x, y)) * pi**2) * pi**2) * pi**2)
 
 
 
